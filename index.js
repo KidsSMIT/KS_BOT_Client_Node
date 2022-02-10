@@ -7,7 +7,7 @@ const {UserDoesNotExist, UnableToSendMessageToServer} = require("./bot_error")
  * Bot class that handles communication between user and sever
  */
 class Bot {
-    static __version__ = "1.0.1";
+    static __version__ = "1.0.2";
 
     /**
      * Creates a instance of your KS-BOT
