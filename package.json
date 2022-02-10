@@ -1,0 +1,37 @@
+{
+    "name": "ks_bot_client_node",
+    "version": "1.0.0",
+    "description": "Node.js framework for interacting with KS-BOT, without any app",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/KidsSMIT/KS_BOT_Client_Node.git"
+    },
+    "keywords": [
+        "KS-BOT"
+    ],
+    "author": {
+        "name": "Kids SMIT",
+        "email": "codingwithcn@gmail.com",
+        "url": "https://www.kidssmit.com"
+    },
+    "contributors": [
+        {
+            "name": "Chidozie N.",
+            "email": "codingwithcn@gmail.com",
+            "url": "https://www.codingwithcn.me"
+        }
+    ],
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/KidsSMIT/KS_BOT_Client_Node/issues"
+    },
+    "homepage": "https://github.com/KidsSMIT/KS_BOT_Client_Node#readme",
+    "dependencies": {
+        "node-fetch": "^2.6.6",
+        "socket.io-client": "^4.4.1"
+    }
+}
