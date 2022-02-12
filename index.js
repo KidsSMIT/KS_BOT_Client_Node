@@ -11,7 +11,7 @@ class Bot {
     /**
      * The version of the Bot class
      */
-    static __version__ = "1.0.2";
+    static __version__ = "2.0.0";
 
     /**
      * The domain name it will be making request too
