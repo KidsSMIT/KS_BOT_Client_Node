@@ -1,6 +1,6 @@
 {
     "name": "@kids_smit/ks_bot_client_node",
-    "version": "2.5.0",
+    "version": "2.5.1",
     "description": "Node.js framework for interacting with KS-BOT, without any app",
     "main": "index.js",
     "readme": "README.md",
