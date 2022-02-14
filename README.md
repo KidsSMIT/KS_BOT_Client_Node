@@ -1,7 +1,7 @@
 ﻿# KS_BOT_Client_Node
 
 ## Node.js Framework for interacting with KS-BOT without any app
-
+> SIDE NOTE: To use ks-bot-client you will need to create a user account at: [kids smit](https://www.kidssmit.com)
 To get started simply install ks-bot-client, simply install it with the following command:
 
 ````Node
