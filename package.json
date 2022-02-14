@@ -5,7 +5,7 @@
     "main": "index.js",
     "readme": "README.md",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "repository": {
         "type": "git",
@@ -19,13 +19,11 @@
         "email": "codingwithcn@gmail.com",
         "url": "https://www.kidssmit.com"
     },
-    "contributors": [
-        {
-            "name": "Chidozie N.",
-            "email": "codingwithcn@gmail.com",
-            "url": "https://www.codingwithcn.me"
-        }
-    ],
+    "contributors": [{
+        "name": "Chidozie N.",
+        "email": "codingwithcn@gmail.com",
+        "url": "https://www.codingwithcn.me"
+    }],
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/KidsSMIT/KS_BOT_Client_Node/issues"
