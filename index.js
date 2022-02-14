@@ -47,6 +47,7 @@ class Bot {
         this.can_run = false;
         this.socket_io = null;
         this.event = new Events(this.errorCallback, log)
+        this.smit_activated = false;
 
         // Just registering events to KS-BOT
         this.add_event("starting_login", function() {
@@ -73,10 +74,35 @@ class Bot {
             console.log("KS-BOT reply is ready")
             console.log(data)
         })
+
+        this.add_event("smith_reply", function(data) {
+          console.log("SMITH is ready to reply")
+          console.log(data)
+        })
       
         this.add_event("timer_over", function(data) {
             console.log("KS-BOT said timer is over")
             console.log("Timer: ", data)
+        })
+
+        this.add_event("activate_smith", function(data) {
+          if (log) console.log("Activating S.M.I.T.H");
+        })
+
+        this.add_event("de_activate_smith", function(data) {
+          if (log) console.log("DeActivating S.M.I.T.H now");
+        })
+
+        this.add_event("SPEAK", function(data) {
+          console.log("SMITH want you to say: ", data);
+        })
+
+        this.add_event("News", function(data) {
+          console.log("Your news is: ", data);
+        })
+
+        this.add_event("Weather", function(data) {
+          console.log("Your weather is: ", data);
         })
     }
 
@@ -146,11 +172,58 @@ class Bot {
             this.socket_io.on("WelcomeMessage", this.welcome);
             this.socket_io.on("BotProcessReply", this.ProcessBotReply);
             this.socket_io.on("Timer Over", this.time_over);
-
+            this.socket_io.on("Switch To Voice Assitant", this.activate_smith);
+            this.socket_io.on("Switch To Text Assitant", this.activate_ks_bot);
+            this.socket_io.on("SPEAK", this.bot_speak);
+            this.socket_io.on("Here is The News", this.news);
+            this.socket_io.on("Here is the Weather", this.weather);
+          
             this.socket_io.emit("launch_bot", {
                 session_id: this.session_id
             })
         }
+    }
+
+    /**
+    * Handles the Here is the Weather event of server
+    * @param {Object.<string, Object>} data - Data sent by server on Here is the Weather event
+    */
+    weather = (data) => {
+      this.call_event("Weather", [data])
+    }
+  
+    /**
+    * Handles the Here is The News event of server
+    * @param {Object.<string, Object>} data - Data sent by server on Here is The News event
+    */
+    news = (data) => {
+      this.call_event("News", [data]);
+    }
+  
+    /**
+    * Handles the SPEAK event of server
+    * @param {Object.<string, Object>} data - Data sent by server on SPEAK event
+    */
+    bot_speak = (data) => {
+      this.call_event("SPEAK", [data.what_to_speak]);
+    }
+  
+    /**
+    * Handles the Switch To Text Assitant event of server, and then calls the activate_smith event
+    * @param {Object.<string, Object>} data - Data sent by server on Switch To Text Assitant event
+    */
+    activate_ks_bot = (data) => {
+      this.smit_activated = false;
+      this.call_event("de_activate_smith", [data])
+    }
+  
+    /**
+    * Handles the Switch To Voice Assitant event of server, and then calls the activate_smith event
+    * @param {Object.<string, Object>} data - Data sent by server on Switch To Voice Assitant event
+    */
+    activate_smith = (data) => {
+      this.smit_activated = true;
+      this.call_event("activate_smith", [data])
     }
 
     /**
@@ -166,7 +239,11 @@ class Bot {
      * @param {Object.<string, Object>} data - Data sent by server in BotProcessReply event
      */
     ProcessBotReply = (data) => {
+      if (this.smit_activated) {
+        this.call_event("smith_reply", [data]);
+      }else {
         this.call_event("bot_reply", [data]);
+      }
     }
 
     /**

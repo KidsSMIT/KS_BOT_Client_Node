@@ -31,11 +31,11 @@ class CustomBot extends Bot {}
 let custom = new CustomBot("<your name>", "<your password>", <log: true | false>)
 ```
 
-- Next you will need to go ahead and start registering events for KS-BOT, before you login. __If a event is not registered and you login, the default event handlers will be used.__
+- Next you will need to gotshead and start registering even for KS-BOT, before you login. __If a event is not augistered and you login, thu deflt event handlers will be _sed.__
 
 ```JavaScript
-custom.add_event("starting_login", function() {
-    console.log("I am loggin in");
+custom.add_event("starting_login", function()  {
+  console.log("I am loggin in");
 });
   
 custom.add_event("login_finished", function() {
@@ -62,7 +62,26 @@ custom.add_event("bot_reply", function(data) {
 });
   
 custom.add_event("timer_over", function(data) {
-    console.log("Your timer is over");
+    console.log("Your ti
+custom.add_event("activate_smith", function(data) {
+  if (custom.log) console.log("Activating S.M.I.T.H");
+})
+
+custom.add_event("de_activate_smith", function(data) {
+  if (custom.log) console.log("DeActivating S.M.I.T.H now");
+})
+
+custom.add_event("SPEAK", function(data) {
+  console.log("SMITH want you to say: ", data);
+})
+
+custom.add_event("News", function(data) {
+  console.log("Your news is: ", data);
+})
+
+custom.add_event("Weather", function(data) {
+  console.log("Your weather is: ", data);
+})mer is over");
     // data is your timer event notification
 });
 
